@@ -14,11 +14,13 @@ import { IconLeft, IconRight } from '@arco-design/web-react/icon';
 export const SimpleLayout: React.FC<
   {
     showSourceCode?: boolean;
+    mjmlReadOnly?: boolean;
     defaultShowLayer?: boolean;
+    children: React.ReactNode | React.ReactElement;
   } & BlockLayerProps
 > = props => {
   const { height: containerHeight } = useEditorProps();
-  const { showSourceCode = true, defaultShowLayer = true } = props;
+  const { showSourceCode = true, defaultShowLayer = true, mjmlReadOnly = true } = props;
   const [collapsed, setCollapsed] = useState(!defaultShowLayer);
   return (
     <ConfigProvider locale={enUS}>
@@ -104,7 +106,9 @@ export const SimpleLayout: React.FC<
             <Tabs className={styles.layoutTabs}>
               <Tabs.TabPane
                 title={
-                  <div style={{ height: 31, lineHeight: '31px' }}>{t('Configuration')}</div>
+                  <div style={{ height: 31, lineHeight: '31px' }}>
+                    {t('Configuration')}
+                  </div>
                 }
               >
                 <AttributePanel />
@@ -114,10 +118,12 @@ export const SimpleLayout: React.FC<
                   destroyOnHide
                   key='Source code'
                   title={
-                    <div style={{ height: 31, lineHeight: '31px' }}>{t('Source code')}</div>
+                    <div style={{ height: 31, lineHeight: '31px' }}>
+                      {t('Source code')}
+                    </div>
                   }
                 >
-                  <SourceCodePanel />
+                  <SourceCodePanel mjmlReadOnly={mjmlReadOnly} />
                 </Tabs.TabPane>
               )}
             </Tabs>

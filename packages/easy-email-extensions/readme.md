@@ -5,6 +5,7 @@
 Provide default UI components, when they don’t meet your needs, you can refer to it and write your own.
 
 It also provides the following utils:
+
 - MjmlToJson
 
 ## usage
@@ -86,7 +87,7 @@ const categories: ExtensionProps['categories'] = [
       },
       {
         title: '4 columns',
-        payload: [[['25%', '25%', '25%', '25%']]],
+        payload: [['25%', '25%', '25%', '25%']],
       },
     ],
   },
@@ -222,6 +223,7 @@ export default function App() {
 
   - props
     - showSourceCode
+    - mjmlReadOnly
     - defaultShowLayer
 
 - `StandardLayout`
